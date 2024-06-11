@@ -1,0 +1,14 @@
+{
+    "name": "playwright-foxhound",
+    "version": "1.0.0",
+    "description": "Testing playwright with foxhound",
+    "main": "index.js",
+    "scripts": {
+	"go": "node index.js"
+    },
+    "author": "",
+    "license": "ISC",    
+    "dependencies": {
+	"playwright": "1.21.1"
+    }
+}

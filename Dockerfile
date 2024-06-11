@@ -49,8 +49,16 @@ RUN ./mach build
 RUN cp /foxhound/playwright/browser_patches/firefox/preferences/00-playwright-prefs.js /foxhound/build/obj-tf-release/dist/bin/browser/defaults/preferences/00-playwright-prefs.js
 RUN cp /foxhound/playwright/browser_patches/firefox/preferences/playwright.cfg /foxhound/build/obj-tf-release/dist/bin/playwright.cfg
 
+# Index
+RUN mkdir /foxhound/code
+COPY ./package.json /foxhound/code/
+COPY ./index.js /foxhound/code/
+
 RUN useradd -ms /bin/bash bubu
 RUN chown -R bubu /foxhound
 USER bubu
-WORKDIR /foxhound
-ENTRYPOINT ["tail -n /dev/null"]
+WORKDIR /foxhound/code/
+RUN npm install
+#CMD ["node", "index.js"]
+CMD ["tail", "-f", "/dev/null"]
+
